@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent
+      backgroundColor: Colors.blueAccent,
       appBar: AppBar(
         title: Text("Conversor de Moedas"),
         backgroundColor: Colors.purpleAccent,
@@ -45,11 +45,22 @@ class _HomeState extends State<Home> {
                  style: TextStyle(
                    color: Colors.white,
                    fontSize: 20.0),
-                textAlign: TextAlign.center 
-                ),
+                textAlign: TextAlign.center ),
               );
+              default:
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text("Erro ao carregar =/",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0),
+                    textAlign: TextAlign.center ),
+                  );
+                }else{
+                  return Container(color: Colors.green,);
+                }
           }
         })
-      ),
+      );
   }
 }
